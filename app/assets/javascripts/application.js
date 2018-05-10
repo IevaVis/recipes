@@ -54,12 +54,12 @@ function show(data){
 $(document).on('turbolinks:load', function() {
 	// when clicking on button class filter
 	$('.filter').on('click', function(event){
-		// prevent Default = default is getting all the cocktails
+		// prevent Default
 		event.preventDefault();
 		//instead look for the cocktails where non_alcoholic = true
 		$.ajax({
 			// URL - A string containing the URL to which the request is sent.
-			url: '/search?search=' + "&non_alcoholic=true",
+			url: "/search?non_alcoholic=true",
 			method: "GET",
 			dataType: "json",
 			success: function(data){
@@ -69,15 +69,16 @@ $(document).on('turbolinks:load', function() {
 					$(".row").append('<div class="col-md-4"><div class="cocktails"><img src='
 					+
 					function() {
-						if (data[i].picture == 0) {
+						if (data[i].picture.url == null) {
 							return "/assets/Cocktail.jpg"
 						} else {
 							return data[i].picture.url
 						}
 					}()
 					+
-					' , class="picture"><a href="/cocktails/' + data[i].id + ">" + 
-					data[i].ingredients + data[i].preparation)
+					' , class="picture"><a href="/cocktails/' + data[i].id + '">' + 
+					"Ingredients:" + data[i].ingredients + "<br/>" +
+					"Preparation:" + data[i].preparation + "</a></div></div>")
 				}
 			}
 		});
