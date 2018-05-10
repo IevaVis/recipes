@@ -1,0 +1,32 @@
+
+<div class="filter-button container">
+  <a href="/" class="btn btn-dark filter">Non Alcoholic</a>
+</div>
+
+
+<div class="row">
+	<% @cocktails.each do |cocktail| %>
+		<div id="<%= cocktail.id %>" class="col-md-4">
+			<div class="cocktails">
+				<% if cocktail.picture.present? %>
+					<a href="/cocktails/<% cocktail.id %>">
+					<%= image_tag cocktail.picture.url, class: "picture" %>
+					</a>
+				<% else %>
+					<a href="/cocktails/<% cocktail.id %>">
+					<img src="/assets/Cocktail.jpg", class="picture">
+					</a>
+				<% end %>
+				<br/>
+
+				<%= link_to cocktail.title, cocktail_path(cocktail) %><br/>
+				<p><strong>Ingredients: </strong><%= cocktail.ingredients %></p><br/>
+				<p><strong>Preparation: </strong><%= cocktail.preparation %><br/><br/>
+					<%= link_to 'Edit', edit_cocktail_path(cocktail) if cocktail_owner?(cocktail) %>
+					<%= link_to 'Destroy', cocktail, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_cocktail' if cocktail_owner?(cocktail) %> 
+			</div>
+		</div>
+	<% end %>
+</div>
+
+

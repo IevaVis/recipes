@@ -1,0 +1,16 @@
+
+<%= form.label :title %>
+<%= form.text_field :title %><br/>
+
+<%= form.label :ingredients %>
+<%= form.text_field :ingredients %><br/>
+
+<%= form.label :preparation %>
+<%= form.text_field :preparation %><br/>
+
+<%= label_tag(:non_alcoholic, "Non-Alcoholic") %>
+<%= check_box_tag(:non_alcoholic) %>
+
+<%= form.file_field :picture %>
+
+<%= form.submit "Save" %>
