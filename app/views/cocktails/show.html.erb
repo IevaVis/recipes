@@ -1,10 +1,12 @@
 <h1><%= @cocktail.title %></h1>
 
 	<p><strong>Ingredients: </strong><%= @cocktail.ingredients %></p><br/>
-				<p><strong>Preparation: </strong><%= @cocktail.preparation %><br/><br/>
+		<p><strong>Preparation: </strong><%= @cocktail.preparation %><br/><br/>
 
-					<%= link_to 'Edit', edit_cocktail_path(@cocktail) if cocktail_owner?(@cocktail) %>
-					<%= link_to ' / Destroy', @cocktail, method: :delete, data: { confirm: 'Are you sure?' } if cocktail_owner?(@cocktail) %>
+		<%= link_to 'Homepage', root_path %>
+		<%= link_to ' / Edit', edit_cocktail_path(@cocktail) if cocktail_owner?(@cocktail) %>
+		<%= link_to ' / Destroy', @cocktail, method: :delete, data: { confirm: 'Are you sure?' } if cocktail_owner?(@cocktail) %>
+
 
 
 <div class="jumbotron">

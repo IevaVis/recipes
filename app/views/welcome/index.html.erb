@@ -9,17 +9,17 @@
 		<div id="<%= cocktail.id %>" class="col-md-4">
 			<div class="cocktails">
 				<% if cocktail.picture.present? %>
-					<a href="/cocktails/<% cocktail.id %>">
-					<%= image_tag cocktail.picture.url, class: "picture" %>
+					<a href="/cocktails/<%= cocktail.id %>">
+						<%= image_tag cocktail.picture.url, class: "picture" %>
 					</a>
 				<% else %>
-					<a href="/cocktails/<% cocktail.id %>">
-					<img src="/assets/Cocktail.jpg", class="picture">
+					<a href="/cocktails/<%= cocktail.id %>">
+						<img src="/assets/Cocktail.jpg", class="picture">
 					</a>
 				<% end %>
 				<br/>
 
-				<%= link_to cocktail.title, cocktail_path(cocktail) %><br/>
+				<%= link_to cocktail.title.upcase, cocktail_path(cocktail) %><br/>
 				<p><strong>Ingredients: </strong><%= cocktail.ingredients %></p><br/>
 				<p><strong>Preparation: </strong><%= cocktail.preparation %><br/><br/>
 					<%= link_to 'Edit', edit_cocktail_path(cocktail) if cocktail_owner?(cocktail) %>
@@ -27,6 +27,7 @@
 			</div>
 		</div>
 	<% end %>
-</div>
+	</div>
+
 
 

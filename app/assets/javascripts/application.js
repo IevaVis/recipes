@@ -56,7 +56,7 @@ $(document).on('turbolinks:load', function() {
 	$('.filter').on('click', function(event){
 		// prevent Default
 		event.preventDefault();
-		//instead look for the cocktails where non_alcoholic = true
+		//look for the cocktails where non_alcoholic = true
 		$.ajax({
 			// URL - A string containing the URL to which the request is sent.
 			url: "/search?non_alcoholic=true",
@@ -76,9 +76,10 @@ $(document).on('turbolinks:load', function() {
 						}
 					}()
 					+
-					' , class="picture"><a href="/cocktails/' + data[i].id + '">' + 
-					"Ingredients:" + data[i].ingredients + "<br/>" +
-					"Preparation:" + data[i].preparation + "</a></div></div>")
+					' , class="picture"><a href="/cocktails/' + data[i].id + '">' + "<br/>" + 
+					 data[i].title + "</a>" + "<br/>" +
+					"<strong>Ingredients</strong>: " + data[i].ingredients + "<br/>" +
+					"<strong>Preparation</strong>: " + data[i].preparation + "</div></div>")
 				}
 			}
 		});
