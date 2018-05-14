@@ -1,3 +1,4 @@
+require 'capybara/rspec'
 require 'rails_helper'
 
 describe "the signin process" do

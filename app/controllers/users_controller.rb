@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :require_login, only: [:show, :edit, :update, :destroy]
 
 def index
 	@users = User.all
@@ -51,5 +52,12 @@ private
 def valid_params
 	params.require(:user).permit(:name, :email, :password)
 end
+
+def require_login
+		if !logged_in?
+		redirect_to root_path
+	end
+end
+
 
 end

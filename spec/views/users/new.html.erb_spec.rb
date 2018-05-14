@@ -1,3 +1,4 @@
+require 'capybara/rspec'
 require 'rails_helper'
 
     feature 'Creating User' do
